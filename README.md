@@ -90,15 +90,21 @@ Enter the results produced by your final, reproducible evaluation run in the tab
 
 | Model | Accuracy | AUC | Precision (Malignant) | Recall (Malignant) | F1 (Malignant) | MCC |
 |---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | 0.9825 | 0.9977 | 0.9726 | 1.0000 | 0.9861 | 0.9634 |
-| Decision Tree | 0.9474 | 0.9431 | 0.9583 | 0.9583 | 0.9583 | 0.8881 |
-| KNN | 0.9561 | 0.9856 | 0.9467 | 0.9859 | 0.9655 | 0.9077 |
-| Naive Bayes | 0.9737 | 0.9971 | 0.9595 | 1.0000 | 0.9793 | 0.9455 |
-| Support Vector Machine | 0.9825 | 0.9974 | 0.9726 | 1.0000 | 0.9861 | 0.9634 |
+| Logistic Regression | 0.9561 | 0.9977 | 0.9750 | 0.9070 | 0.9398 | 0.9068 |
+| Decision Tree | 0.9298 | 0.9253 | 0.9070 | 0.9070 | 0.9070 | 0.8506 |
+| KNN | 0.9561 | 0.9959 | 1.0000 | 0.8837 | 0.9383 | 0.9086 |
+| Naive Bayes | 0.9737 | 0.9984 | 1.0000 | 0.9302 | 0.9639 | 0.9447 |
+| Support Vector Machine | 0.9474 | 0.9934 | 1.0000 | 0.8605 | 0.9250 | 0.8907 |
 
-**Before submitting these numbers:** verify that the training/evaluation script calculated Precision, Recall, and F1 with `pos_label=0`, and calculated AUC using the malignant-class probability or score. If the original results used Scikit-learn's default positive label of `1`, those three metrics describe the benign class and must be recalculated for this table.
+Based on the experimental results, Naive Bayes emerged as the best-performing model among the five machine-learning classifiers evaluated for breast cancer classification.
 
-The reported results suggest that Logistic Regression and SVM achieved the highest reported accuracy and MCC on this test split. Logistic Regression has a slightly higher reported AUC than SVM. This is a result for this particular split; it does not prove that either model will generalize equally well to new populations or clinical settings.
+Naive Bayes achieved the highest Accuracy of 97.37%, AUC of 99.84%, Malignant Recall of 93.02%, F1-score of 96.39%, and MCC of 0.9447. It also achieved 100% Malignant Precision, indicating that all samples predicted as malignant in the test dataset were actually malignant.
+
+K-Nearest Neighbours (KNN) and Support Vector Machine (SVM) also achieved 100% malignant precision. However, their malignant recall scores were lower at 88.37% and 86.05%, respectively. Logistic Regression demonstrated strong performance with an AUC of 99.77%, while Decision Tree recorded comparatively lower accuracy and AUC among the five models.
+
+Overall, Naive Bayes is the preferred model based on the supplied test results, as it provides the strongest balance of accuracy, malignant-class precision, recall, and overall classification performance.
+
+These findings are specific to the dataset and test split used in this experiment. Further validation using independent datasets and appropriate clinical evaluation would be necessary before considering any real-world medical application. This project is intended for educational and research purposes only and should not be used as a substitute for professional medical diagnosis.
 
 Do not claim that a model overfits unless training-versus-validation/test results support that conclusion. Likewise, test-set performance alone does not establish clinical usefulness.
 
